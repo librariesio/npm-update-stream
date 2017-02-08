@@ -1,0 +1,17 @@
+{
+  "name": "npm-update-stream",
+  "version": "1.0.0",
+  "description": "JSON API of recent updates streamed from npm",
+  "main": "index.js",
+  "engines": {
+    "node": "7.5"
+  },
+  "author": "Andrew Nesbitt",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "changes-stream": "^2.2.0",
+    "cors": "^2.8.1",
+    "express": "^4.14.1",
+    "redis": "^2.6.5"
+  }
+}
