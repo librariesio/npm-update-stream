@@ -23,6 +23,12 @@ app.get('/', function (req, res) {
   });
 })
 
+app.get('/recent', function (req, res) {
+  redis.lrange('npm-updated-names', 0, 5000, function (err, replies) {
+    res.json([...new Set(replies)]);
+  });
+})
+
 var port = process.env.PORT || 5001;
 app.listen(port, function() {
   console.log('Listening on', port);
