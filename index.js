@@ -13,7 +13,7 @@ var changes = new ChangesStream({
 
 changes.on('data', function (change) {
   var name = change.doc.name
-  if(name.length != 0){
+  if(name){
     console.log(name)
     redis.lpush('npm-updated-names', name)
   }
