@@ -13,8 +13,10 @@ var changes = new ChangesStream({
 
 changes.on('data', function (change) {
   var name = change.doc.name
-  console.log(name)
-  redis.lpush('npm-updated-names', name)
+  if(name.length != 0){
+    console.log(name)
+    redis.lpush('npm-updated-names', name)
+  }
 })
 
 app.get('/', function (req, res) {
