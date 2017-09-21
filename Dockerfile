@@ -1,18 +1,12 @@
-FROM node:7.5.0
-RUN \
-    apt-get update \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN npm install --global yarn
-
+FROM node:8.5.0-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-COPY package.json /usr/src/app/
-COPY yarn.lock /usr/src/app/
-RUN yarn install
+ENV NODE_ENV production
+
+COPY package.json yarn.lock /usr/src/app/
+RUN yarn install --production
 
 COPY . /usr/src/app
 
-CMD node index.js
+CMD npm start
