@@ -1,6 +1,6 @@
 var ChangesStream = require('changes-stream');
 var Redis = require("redis");
-var redis = Redis.createClient(process.env.REDIS_URL);
+var redis = Redis.createClient({host: process.env.REDIS_URL || 'redis'});
 var express = require('express');
 var cors = require('cors');
 var app = express();

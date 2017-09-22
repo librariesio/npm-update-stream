@@ -1,0 +1,14 @@
+version: '3'
+services:
+  redis:
+    image: redis:4-alpine
+    volumes:
+      - ./data:/data
+  app:
+    build: ./
+    ports:
+      - 80:5000
+    links:
+      - redis
+    environment:
+      - PORT=5000
