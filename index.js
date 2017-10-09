@@ -20,7 +20,7 @@ changes.on('data', function (change) {
 })
 
 app.get('/', function (req, res) {
-  redis.lrange('npm-updated-names', 0, 100, function (err, replies) {
+  redis.lrange('npm-updated-names', 0, 200, function (err, replies) {
     res.json([...new Set(replies)]);
   });
 })
