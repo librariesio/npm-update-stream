@@ -6,7 +6,7 @@ var cors = require('cors');
 var app = express();
 
 var changes = new ChangesStream({
-  db: 'https://skimdb.npmjs.com/registry',
+  db: 'https://replicate.npmjs.com/registry',
   include_docs: true,
   since: 'now'
 });
