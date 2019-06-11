@@ -4,14 +4,14 @@
   "description": "JSON API of recent updates streamed from npm",
   "main": "index.js",
   "engines": {
-    "node": "9.8.0"
+    "node": "10.16.0"
   },
   "author": "Andrew Nesbitt",
   "license": "AGPL-3.0",
   "dependencies": {
     "changes-stream": "^2.2.0",
-    "cors": "^2.8.1",
-    "express": "^4.14.1",
-    "redis": "^2.6.5"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "redis": "^2.8.0"
   }
 }
