@@ -13,9 +13,11 @@ var changes = new ChangesStream({
 
 changes.on('data', function (change) {
   var name = change.doc.name
+  var version = change.doc['dist-tags'].latest
   if(name){
-    console.log(name)
+    console.log(name, version)
     redis.lpush('npm-updated-names', name)
+    redis.lpush('npm-updated-names-with-versions', name + ' ' + version)
   }
 })
 
@@ -27,6 +29,12 @@ app.get('/', function (req, res) {
 
 app.get('/recent', function (req, res) {
   redis.lrange('npm-updated-names', 0, 5000, function (err, replies) {
+    res.json([...new Set(replies)]);
+  });
+})
+
+app.get('/recent-with-versions', function (req, res) {
+  redis.lrange('npm-updated-names-with-versions', 0, 5000, function (err, replies) {
     res.json([...new Set(replies)]);
   });
 })
