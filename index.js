@@ -16,7 +16,7 @@ changes.on('data', function (change) {
   var name = change.doc.name
   var version = change.doc['dist-tags'].latest
   if(name){
-    console.log(change.seq, name, version)
+    console.log('seq=' + change.seq, 'name=' + name, 'version=' + version)
     redis.lpush('npm-updated-names', name)
     redis.lpush('npm-updated-names-with-versions', name + ' ' + version)
     redis.set('npm:latest_seq', change.seq)
@@ -43,5 +43,5 @@ app.get('/recent-with-versions', function (req, res) {
 
 var port = process.env.PORT || 5001;
 app.listen(port, function() {
-  console.log('Listening on', port, ' at sequence ', since);
+  console.log('Listening on', port, 'at sequence', since);
 });
